@@ -1,0 +1,13 @@
+
+<jqxDataTable #myDataTable
+    (onRowSelect)="onRowSelect($event)" 
+    [selectionMode]="'singleRow'"
+    [width]="'100%'" [source]="dataAdapter" [columns]="columns"
+    [altRows]="true" [pageable]="true" [filterable]="true"
+    [pageable]="true" [altRows]="true"  [sortable]="true" [pagerMode]="'advanced'"  [filterMode]="'advanced'"
+    >
+</jqxDataTable>
+<br>
+<jqxButton class="btn-info btn" (onClick)="editEmployee()"  [width]="110">Edit</jqxButton>
+<jqxButton class="btn-warning btn"  (onClick)="deleteEmployee()" [width]="110">Delete</jqxButton>
+

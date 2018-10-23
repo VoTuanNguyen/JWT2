@@ -1,0 +1,32 @@
+
+<html>
+    <head>
+           <!--  <link rel="stylesheet" href=  "../../../../../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css" type="text/css" /> -->
+<!--             <link rel="stylesheet" href=  "../../../../../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.darkblue.css" type="text/css" /> -->
+
+        </head>
+<body>
+    <h3>DASHBOARD</h3>
+<jqxDataTable #myDataTable
+    
+    (onRowSelect)="onRowSelect($event)"  
+    [width]="'100%'" [source]="dataAdapter" [columns]="columns" [theme]="darkblue"
+    [altRows]="true" [pageable]="true" [filterable]="true"
+    [pageable]="true" [altRows]="true" [sortable]="true" 
+    [pagerMode]="'advanced'"  
+    [filterMode]="'advanced'"
+    [selectionMode]="'singleRow'"
+    [pagerButtonsCount]="8"
+    >
+</jqxDataTable>
+<br>
+<jqxButton class="btn-primary btn" (onClick)="excelExport()" [width]="110">Export to Excel</jqxButton>
+<jqxButton #printvisitor class="btn-primary btn" [disabled]="true" (onClick)="printpdf()" [width]="110">PrintVisitorCard</jqxButton>
+<jqxButton #deletevisitor class="btn-primary btn" [disabled]="true" (onClick)="deleteVisitor()" [width]="110">Delete</jqxButton>
+<jqxButton #checkin class="btn-primary btn" [disabled]="true" (onClick)="checkIn()" [width]="110">CheckIn</jqxButton>
+<jqxButton #checkout class="btn-primary btn" [disabled]="true" (onClick)="checkOut()" [width]="110">CheckOut</jqxButton>
+</body>
+</html>
+
+
+

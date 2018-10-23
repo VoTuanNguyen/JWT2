@@ -1,0 +1,122 @@
+<html>
+  <head>
+<title>Employee</title>
+
+  </head>
+  <body>
+    <div>
+      <div  style="margin-bottom: 0px;"><h2>Employee Master</h2></div>
+      <div style="padding: 20px;">
+          <hr>
+        <jqxValidator #myValidator [rules]="rules" [animationDuration]="0" [hintType]="'label'">
+          <form (ngSubmit) = "onClickSubmit()" #f="ngForm" id="employeeform" enctype="multipart/form-data">
+          <!-- <form (ngSubmit) = "onClickSubmit()" #f="ngForm" enctype="multipart/form-data"> -->
+            <div class="top-padd">
+              <div class="dt1">Name</div>
+              <div class="dt2">
+                  <!-- [source]="countries" -->
+                <input type="hidden" class="form-control sm" name="emp_id" id="emp_id" #emp_id [(ngModel)]="emp.emp_id" value=""/>
+                <jqxInput
+                  [width]="'100%'" [height]="35" id="emp_name" #emp_name name="emp_name" [(ngModel)]="emp.emp_name" 
+                  [placeHolder]="'Enter Name'" [maxLength]='35'>
+                </jqxInput>
+              </div>
+              <div class="dt1">Designation</div>
+              <div class="dt2">
+                <jqxInput
+                  [width]="'100%'" class="form-control sm" [height]="35" id="emp_designation" #emp_designation name="emp_designation" [(ngModel)]="emp.emp_designation" 
+                  [placeHolder]="'Enter Designation'" [maxLength]='35'>
+                </jqxInput>
+              </div>
+              <div class="dt1">Qualification</div>
+              <div class="dt2">
+                <jqxInput
+                  [width]="'100%'" class="form-control sm" [height]="35" id="emp_qualification" #emp_qualification name="emp_qualification" [(ngModel)]="emp.emp_qualification" 
+                  [placeHolder]="'Qualification'" [maxLength]='30'>
+                </jqxInput>
+              </div>
+            </div>
+
+            <!-- <br style="clear: both;"> -->
+
+            <div class="top-padd">
+              <div class="dt1">Mobile</div>
+              <div class="dt2">
+                  <jqxMaskedInput #emp_mobile
+                  [mask]="'##########'"
+                  [width]="200" #emp_mobile name="emp_mobile" [(ngModel)]="emp.emp_mobile"
+                  [height]="25" class="form-control sm"  id="emp_mobile">
+              </jqxMaskedInput>
+                
+                <!-- <jqxInput
+                  [width]="'100%'" [height]="35" id="emp_mobile" #emp_mobile name="emp_mobile" [(ngModel)]="emp.emp_mobile" 
+                  [placeHolder]="'Contact Number'" [maxLength]='10'>
+                </jqxInput> -->
+              </div>
+              <div class="dt1">Email</div>
+              <div class="dt2">
+                <jqxInput
+                  [width]="'100%'" class="form-control sm" [height]="35" id="emp_email" #emp_email name="emp_email" [(ngModel)]="emp.emp_email" 
+                  [placeHolder]="'Email address'" [maxLength]='64'>
+                </jqxInput>
+              </div>
+              <div class="dt1">Department</div>
+              <div class="dt2">
+                <jqxInput
+                  [width]="'100%'" class="form-control sm" [height]="35" id="dept_id" [source]="department" [minLength]="1" #dept_id name="dept_id" [(ngModel)]="emp.dept_id" 
+                  [placeHolder]="'Department'" [maxLength]='35'>
+                </jqxInput>
+              </div>
+            </div>
+            <div class="top-padd">
+              <div class="dt1">Address</div>
+              <div class="dt2">
+                <jqxTextArea [width]="'100%'" class="form-control " [height]="60" id="emp_address" #emp_address name="emp_address" [(ngModel)]="emp.emp_address" 
+                  [minLength]="1" [placeHolder]="'Enter address'" [maxLength]='300'>
+                </jqxTextArea>
+              </div>
+              <div class="dt1">Photo</div>
+              <div class="dt2">
+                <input type="file" class="form-control sm" (change)="selectFile($event)" id="emp_photo" #emp_photo name="emp_photo" accept="image/*">
+                <!-- <jqxFileUpload 
+                  [width]="'100%'" (change)="selectFile($event)" name="emp_photo" >
+                </jqxFileUpload>  -->
+                <img src="" #empimage />
+              </div>
+              <div class="dt1">Gender</div>
+              <div class="dt2">
+                <div class="radiocheck">
+                  <jqxRadioButton 
+                    [width]="'100%'"  [height]="25" id="emp_gender" #emp_gender1 name="emp_gender" [(ngModel)]="emp.emp_gender" value="M">
+                    Male
+                  </jqxRadioButton>
+                </div>
+                <div class="radiocheck">
+                  <jqxRadioButton
+                    [width]="'100%'" [height]="25" id="emp_gender" #emp_gender2 name="emp_gender" [(ngModel)]="emp.emp_gender" value="F">
+                    Female
+                  </jqxRadioButton>
+                </div>
+              </div>
+            </div>
+            <div class="top-padd">
+              <div class="dt1">
+                <jqxCheckBox #active id="active"  name="active" [(ngModel)]="emp.active">Active</jqxCheckBox>
+              </div>
+            </div>
+            <div class="top-padd Center">
+              <button type="submit" class="btn-success btn">Save</button>
+              <button type="button"class="btn-danger btn"  (click)="cancel()">Clear</button>       
+            </div>
+         <!--    <img #editphoto src="{{editempphoto}}" type="hidden"/> -->
+          </form>
+        </jqxValidator>
+      </div>
+      <hr>
+      <div>
+        <app-employeedatatable>loding...</app-employeedatatable>
+      </div> 
+    </div>
+  </body>
+</html>
+

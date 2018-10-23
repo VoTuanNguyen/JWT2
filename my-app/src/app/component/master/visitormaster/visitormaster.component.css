@@ -1,0 +1,20 @@
+.dt1{
+    width: 150px;
+    float: left;
+    padding-left: 10px;
+}
+
+.dt2{
+    width : 200px;
+    float: left;
+}
+
+.top-padd{
+    clear: both;
+    padding-top: 20px;
+}
+.radiocheck
+{
+    float: left;
+    width: 50%;
+}

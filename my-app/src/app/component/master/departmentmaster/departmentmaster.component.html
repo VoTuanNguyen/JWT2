@@ -1,0 +1,44 @@
+<html>
+  <head>
+
+    <title>Department</title>
+  </head>
+  <body>
+    <div>
+      <div style="margin-bottom: 0px;"><h2>Department Master</h2><hr></div>
+      <div style="padding: 20px; float: left; width: 50%;" class="add-border">
+        <form (ngSubmit) = "onClickSubmit()" #f="ngForm" id="departmentform">
+          <div class="top-padd Center">
+           <div class="dt1">Dept Name</div>
+            <div class="dt2">
+                <!-- [source]="countries" -->
+              <input type="hidden" name="dept_id" id="dept_id" #dept_id [(ngModel)]="dept.dept_id" value=""/>
+              <jqxInput
+                [width]="'100%'" [height]="35" id="dept_name" name="dept_name" #dept_name [(ngModel)]="dept.dept_name" 
+                [placeHolder]="'Enter Name'" [maxLength]='50'>
+              </jqxInput>
+            </div>
+          </div>
+          <div class="top-padd Center">
+            <div class="dt1">Dept Location</div>
+            <div class="dt2">
+              <jqxInput
+                [width]="'100%'" [height]="35" id="dept_location" name="dept_location" #dept_location [(ngModel)]="dept.dept_location"
+                [placeHolder]="'Enter Location'" [maxLength]='50'>
+              </jqxInput>
+            </div>
+          </div>
+          <div class="top-padd Center">
+            <div class="Center">
+            <button type="submit"  class="btn-success btn">Save</button>
+            <button type="button" (click)="cancel()"  class="btn-danger btn">Clear</button></div>
+          </div>
+        </form>
+ 
+      </div>
+      <div style="float: left; width: 40%">
+        <app-departmentdatatable>loading...</app-departmentdatatable>
+      </div> 
+    </div>
+  </body>
+</html>

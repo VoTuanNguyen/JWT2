@@ -1,0 +1,152 @@
+<!-- 
+  <div #container style="height: 300px; width:800px;">
+  <jqxPanel #myPanel [width]="'65%'" [height]="'100%'">
+        <h4 style="text-align: center;">About Us</h4>
+ -->
+
+
+ <div class="container">
+    <h2>Visitor Registration</h2>
+    <hr>
+<div class="row">
+    <hr>
+  <div class="col-lg-4">
+      <jqxValidator #myValidator [rules]="rules" [animationDuration]="0" [hintType]="'label'">
+          <form  id="form" #f="ngForm" (ngSubmit)="visitorsavedata()">
+            <input type="hidden" name="v_hostemp_id" id="v_hostemp_id" #emp_id [(ngModel)]="visitor.v_hostemp_id" value=""/>
+              <div class="form-group">
+                  <label for="email">Visitor Name:</label>
+                  <jqxInput 
+                  class="form-control sm" id="v_name" #v_name [(ngModel)]="visitor.v_name" #visitorname="ngModel" name="v_name"
+                  [minLength]="1"  [maxLength]='35'>
+                 </jqxInput>
+              </div>
+
+              <div class="form-group">
+                  <label for="email">Email :</label>
+                  <jqxInput 
+                   id="v_email" class="form-control sm" #v_email [(ngModel)]="visitor.v_email" #visitoremail="ngModel" name="v_email"
+                  [minLength]="1" [maxLength]='64' [placeHolder]="''">
+              </jqxInput>
+              </div>
+
+              <div class="form-group">
+                    <label for="Mobile">Mobile :</label>
+                    <jqxMaskedInput #v_mobile
+                    [mask]="'##########'" [height]="16"
+                     [(ngModel)]="visitor.v_mobile" #visitormobile="ngModel" name="v_mobile"
+                    class="form-control sm"  id="v_mobile">
+    </jqxMaskedInput>
+                  
+                 <!--  <jqxInput  
+                   id="v_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '');this.value = this.value.replace(/(.*)\./g, '$1');"  #v_mobile [(ngModel)]="visitor.v_mobile" #visitormobile="ngModel" name="v_mobile" 
+                  [minLength]="1" [maxLength]='10'>
+              </jqxInput> -->
+              </div>
+
+
+              <div class="form-group">
+                <label>Employee Name </label>
+                <jqxInput 
+                    class="form-control" id="v_host_id" #v_host_id [(ngModel)]="visitor.v_host_id" #v_host_id="ngModel" name="v_host_id"
+                    [minLength]="1" [maxLength]='35'[placeHolder]="''">
+                </jqxInput>
+            </div>
+
+              <div class="form-group">
+                  <label>Purpose of meeting </label>
+                  <jqxInput 
+                      class="form-control" id="v_purpose" #v_purpose [(ngModel)]="visitor.v_purpose" #purpose="ngModel" name="v_purpose"
+                      [minLength]="1" [maxLength]='30' [placeHolder]="''" [source]="meeting">
+                  </jqxInput>
+              </div>
+
+
+              <div class="form-group">
+                  <label>Date </label>
+                  <jqxDateTimeInput [height]="16" [width]="'100%'" class="form-control" #v_date id="v_date" [(ngModel)]="visitor.v_date" #date="ngModel" name="v_date"
+                    >
+                  </jqxDateTimeInput>
+                  
+              </div>
+
+
+              <div class="form-group">
+                    <label>Photo Upload </label>
+                      <input type="file" [height]="16" class="form-control sm" #v_photo id="v_photo" [(ngModel)]="visitor.v_photo" #v_photo="ngModel" name="v_photo"  (change)="selectphotoFile($event)"/>
+                  </div>
+              <div class="form-group">
+                <label>Document Upload </label>
+                  <input type="file" [height]="16" class="form-control sm" #v_document id="v_document" [(ngModel)]="visitor.v_document" #v_document="ngModel" name="v_document"  (change)="selectdocumentFile($event)"/>
+              </div>
+
+              <div class="form-group">
+                
+               <div class="row">
+                   <div class="col-md-6">         
+         <jqxRadioButton  value="m" #v_gender1 id="v_gender" name="v_gender" [(ngModel)]="visitor.v_gender" 
+                  [height]="25" >
+                  male
+              </jqxRadioButton>
+            </div>
+            <div class="col-md-6">
+                <jqxRadioButton value="f" #v_gender2 id="v_gender" name="v_gender"  [(ngModel)]="visitor.v_gender" 
+                  >
+                     female
+                  </jqxRadioButton>
+                  </div>
+                </div>
+
+                </div>
+
+
+                <div class="form-group">
+                 <div class="row">
+                <div class="col-md-3"></div>
+                        <div class="col-md-6">
+     
+                 <button type="submit" class="btn-success btn">Save</button>  
+                    <button type="button" class="btn-danger btn" (click)="clearForm()">Clear</button>  
+                </div>
+                </div> 
+                </div>         
+         </form>
+         </jqxValidator>
+  </div>
+  <div class="col-lg-4">
+
+
+      <ack-webcam
+      [(ref)]   = "webcam"
+      [options] = "options"
+      (success) = "onCamSuccess($event)"
+      (catch)   = "onCamError($event)">
+    </ack-webcam>
+<jqxProgressBar #myProgressBar
+    [width]="250" [height]="30" [value]="0" [showText]="true" [orientation]="'horizontal'"
+    [renderText]="renderText" [colorRanges]="horizontalColorRanges">
+</jqxProgressBar>
+    <jqxButton  ng-click="cancel"  (onClick)="genBase64()">
+        Take Photo
+    </jqxButton>
+
+   
+
+  </div>
+  <div class="col-lg-4">
+  <img width="320" height="240" #visitorImage src="{{photofile1}}"/>
+  <br>
+  <jqxButton (onClick)="uploadphoto()">
+      Upload Photo
+   </jqxButton>
+  </div>
+
+</div>
+
+</div>
+<app-visitordatatable>loding...</app-visitordatatable>
+  
+
+ 
+<!-- </jqxPanel>
+</div> -->

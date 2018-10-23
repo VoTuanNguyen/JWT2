@@ -1,0 +1,37 @@
+.dt1{
+    width: 30%;
+    float: left;
+    padding-left: 20px;
+}
+
+.dt2{
+     width : 50%; 
+    float: left;
+}
+
+.top-padd{
+    clear: both;
+    padding-top: 20px;
+}
+
+.radiocheck{
+    float: left;
+     width: 50%; 
+}
+
+.Center{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.add-border{
+    border-color: black;
+    border-style: dashed;
+    border-right: dashed;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    margin-right: 90px;
+    margin-left: -70px;
+    height: 200px;
+}
